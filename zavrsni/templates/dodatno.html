@@ -1,0 +1,78 @@
+<!-- Naslijeđivanje base.html i njeznih komponenti -->
+{% extends 'base.html' %}
+<!-- Block dio, naslijeđen od base.html, u koji ide poveznica sa css-om  -->
+{% block link_css %} <link rel="stylesheet"  href="{{ url_for('static', filename='styles/dodatno.css') }}">{% endblock %}
+
+
+<!-- Block dio, naslijeđen od base.html, u koji ide sadržaj za stranicu tečaj  -->
+{% block body %}
+<!-- Bootstrap jumbotron, nalazi se na vrhu sadržaja, ispoda dijela header  -->
+<section class="tecaj">
+<div class="jumbotron">
+    <h1 class="display-4">Zanima te pčelarenje</h1>
+    <p class="lead">Onda je ovo prava prilika za tebe</p>
+    <hr class="my-4">
+    <p>Evo što nudimo...</p>
+    <p class="lead">
+      
+    </p>
+  </div>
+</section>
+
+<!-- Bootstrap card  -->
+<!-- Glavni sadržja stranice sa svim bitnim informacijama  -->
+<section class="opis">
+<div class="row">
+    <div class="col-sm-6">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title"></h5>
+          <p class="card-text"> Ako netko ima želju postati pčelar, a ne zna gdje bi stekao malo iskustva, neka nam se javi na broj: 091 091 091 99. <br>
+            Svu potrebnu opremu dobit ćete kod nas. <br>
+            Jedino što trebate ponijeti je potvrda da niste alergični na ubod pčele. <br>
+            Kod nas možete dobiti odgovore na sva pitanja vezano pčelarstva. <br>
+            Nudimo mogćnost rada na LR i AŽ košnicama. <br>
+            Također moguće je doći u bilo koje doba godine kako bi stekli iskustvo u svim zahtjevima pčelarenja. <br>
+            Svaki lijep dan iskorištavamo za pčelarenje. Samo se najavi i vidimo se <br>
+            Cijena obuke računa se po satu i iznosi 70kn. <br>
+            Hvala. <br>
+            Pogledaj kako to otprilike izgleda.
+          </p>
+          <a href="https://www.youtube.com/watch?v=JQZud_gDgaU" class="btn btn-primary">YouTube</a>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-6">
+      <div class="card">
+        <div class="card-body">
+            <section>
+
+              <!-- Bootstrap card  -->
+              <!-- Podatci o trenutačnoj vremenskoj prognozi za zadano mjesto  -->
+              <!-- Podatci se čuvaju u cache memoriji na određeno vrijeme radi boljeg upravljanja dozvoljenim resursima s Weather Api-->
+          <h3>{{weather.dt | datetime}}</p>
+          </h3>
+          <div class="card" style="width: 24rem;">
+              <h4 class="card-header">
+                  {{weather.name}}
+              </h4>
+              <div class="card-body">
+                  <h5 class="card-title">{{weather.weather[0].description}} <img src="http://openweathermap.org/img/wn/10d@2x.png" alt=""></h5>
+                  <div class="card-text">
+                      <p>Temeratura: {{weather.main.temp}} C˙</p>
+                      <p>Vlažnost zraka: {{weather.main.humidity}}%</p>
+                      <p>Tlak: {{weather.main.pressure}} hpa</p>
+                      <p>Izlazak sunca: {{weather.sys.sunrise | datetime}}</p>
+                      <p>Zalazak sunca: {{weather.sys.sunset | datetime}}</p>
+                  </div>
+                  <pre>{{ now }}</pre>
+                  </section>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+{% endblock %}

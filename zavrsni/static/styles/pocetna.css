@@ -1,0 +1,30 @@
+ /*---------BANNER----------*/
+.banner{
+    background-image: linear-gradient(to right, rgb(255, 255, 153),rgb(255, 255, 0)) ;
+    color:gray !important;
+ 
+    font-weight: 1000 !important;
+    font-size: 20px !important;
+
+     
+  }
+
+  .banner p{
+    padding-top: 60px;
+  }
+
+
+.Logo{
+  padding-bottom: 50px;
+  padding-left: 50px;
+}
+
+ /*---------BOOTSTRAP COROUSEL(SLIKE)----------*/
+
+ .slike{
+  padding-top: 5%;
+  padding-left: 15%;
+  padding-right: 15%;
+  padding-bottom: 5%;
+
+}

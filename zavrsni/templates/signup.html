@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+  <!-- U dijelu Head nalazi se putanja do css-a za ovu stranicu, te link za Bootstrap kako bi se mogli koristiti njegovi elementi  -->
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet"  href="{{ url_for('static', filename='styles/signup.css') }}">
+    <title>Prijava</title>
+   
+</head>
+
+<body>
+  <!-- Bootstrap navbar sa samo jednim elementom(mogućnost prelaska na login stranicu)  -->
+    <nav class="navbar navbar-light" style="background-color: #e3f2fd;">
+        <form class="form-inline">
+            <a class="nav-link" href="{{ url_for('login') }}"><h3> PRIJAVA </h3></a>
+        </form>
+      </nav>
+    <!-- Bootstrap card  -->
+    <!-- Ovdje se prikazuje poruka ukoliko su pogrešni podatci za registraciju novog korisnika  -->
+      <div class="card text-white bg-warning mb-3 ">
+        <div class="d-flex justify-content-center">
+      {% for message in get_flashed_messages() %}
+        <p>{{ message }}</p>
+      {% endfor %}
+        </div>
+      </div>
+    
+    <!-- Bootstrap contanier  -->
+    <!-- Postavljanje komponenti WTForme i njihov razmještaj  -->
+    <div class="container">
+        <div class="row centered-form">
+        <div class="col-xs-12 col-sm-8 col-md-5 col-sm-offset-2 col-md-offset-4">
+        	<div class="panel panel-default">
+        		<div class="panel-heading">
+                        <div class="d-flex justify-content-center">
+			    		<h3 class="panel-title">REGISTRACIJA</h3>
+                        </div>
+			 			</div>
+			 			<div class="panel-body">
+			    		<form role="form" method="POST" action="">
+                            {{ form.csrf_token() }}
+			    			<div class="row">
+			    				<div class="col-xs-6 col-sm-6 col-md-6">
+			    					<div class="form-group">
+                                        <div class="d-flex justify-content-center">
+                                        {{ form.username.label }}
+                                        </div>
+                                        {% if form.username.errors %}
+                                        {{ form.username(class="form-control form-control-lg is-invalid") }}
+                                        <div class="invalid-feedback">
+                                            {% for error in form.username.errors %}
+                                                <span>{{ error }}</span>
+                                            {% endfor %}
+                                        </div>
+                                        {% else %}
+                                        {{ form.username(class="form-control form-control-lg") }}
+                                        {% endif %}
+                                    </div>
+			    				</div>
+			    				<div class="col-xs-6 col-sm-6 col-md-6">
+                                    <div class="form-group">
+                                        <div class="d-flex justify-content-center">
+                                        {{ form.surname.label }}
+                                        </div>
+                                        {% if form.surname.errors %}
+                                        {{ form.surname(class="form-control form-control-lg is-invalid") }}
+                                        <div class="invalid-feedback">
+                                            {% for error in form.surname.errors %}
+                                                <span>{{ error }}</span>
+                                            {% endfor %}
+                                        </div>
+                                        {% else %}
+                                        {{ form.surname(class="form-control form-control-lg") }}
+                                        {% endif %}
+                                    </div>
+			    				</div>
+			    			</div>
+
+			    			<div class="form-group">
+                                <div class="d-flex justify-content-center">
+                                {{ form.email.label }}
+                                </div>
+                                {% if form.email.errors %}
+                                {{ form.email(class="form-control form-control-lg is-invalid") }}
+                                <div class="invalid-feedback">
+                                    {% for error in form.email.errors %}
+                                        <span>{{ error }}</span>
+                                    {% endfor %}
+                                </div>
+                                {% else %}
+                                {{ form.email(class="form-control form-control-lg") }}
+                                {% endif %}
+                            </div>
+
+			    			<div class="row">
+			    				<div class="col-xs-6 col-sm-6 col-md-6">
+			    					<div class="form-group-pass">
+                                        <div class="d-flex justify-content-center">
+                                        {{ form.password.label }}
+                                        </div>
+                                        {% if form.password.errors %}
+                                        {{ form.password(class="form-control form-control-lg is-invalid") }}
+                                        <div class="invalid-feedback">
+                                            {% for error in form.password.errors %}
+                                                <span>{{ error }}</span>
+                                            {% endfor %}
+                                        </div>
+                                        {% else %}
+                                        {{ form.password(class="form-control form-control-lg") }}
+                                        {% endif %}
+                                    </div> <br>
+			    				</div>
+			    				
+			    			</div>
+			    			
+                            <div class="d-flex justify-content-center">
+			    			<div class="form-group">
+                                <button type="button" class="btn btn-info">{{ form.submit(class="btn btn-default")}}</button>
+                            </div>
+                            </div>
+			    		</form>
+			    	</div>
+	    		</div>
+    		</div>
+    	</div>
+    </div>
+
+    
+</body>
+</html>

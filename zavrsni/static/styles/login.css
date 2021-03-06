@@ -1,0 +1,32 @@
+ /*---------BODY----------*/
+body{
+  font-family: cursive;
+}
+
+ /*---------CONATAINER(WTF)----------*/
+.container{
+  padding-top: 10%;
+  font-size: x-large
+}
+
+.content-section{
+  width: 410px;
+  height: 378px;
+  box-shadow: inset 0 0 40px rgba(0, 0, 0, .2), 0 20px 50px rgb(97, 97, 248);
+  border-top-left-radius: 30%;
+  border-bottom-right-radius: 30%;
+  color: blueviolet;
+}
+
+.form{
+  padding-top: 5%;
+}
+
+.naslov{
+  padding-top: 5%;
+  font-size: xx-large;
+}
+
+.invalid-feedback{
+  color: rgb(212, 36, 5);
+}

@@ -1,0 +1,29 @@
+/*---------BOOTSTRAP CARD 1----------*/
+.card1{
+    padding-top: 5%;
+    padding-left: 10%;
+    padding-right: 10%;
+    position: static;
+    color: blueviolet;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    
+}
+/*---------BOOTSTRAP CARD 2----------*/
+.card2{
+    padding-top: 5%;
+    padding-left: 10%;
+    padding-right: 10%;
+    padding-bottom: 5%;
+    position: static;
+    color: blueviolet;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+ }
+
+/*---------INNER CARDS(shadow and transform)----------*/
+ .card{
+     box-shadow: inset 0 0 40px rgb(95, 238, 243), 0 20px 50px rgb(243, 247, 243);
+ }
+
+ .card:hover{
+    transform: scale(1.1);
+}

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- U dijelu Head nalazi se putanja do css-a za ovu stranicu, te link za Bootstrap kako bi se mogli koristiti njegovi elementi  -->
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet"  href="{{ url_for('static', filename='styles/login.css') }}">
+    <title>Registracija</title>
+    
+</head>
+
+<body>
+ <!-- Bootstrap navbar sa samo jednim elementom(mogućnost prelaska na sign up stranicu)  -->
+    <nav class="navbar navbar-light" style="background-color: #e3f2fd;">
+        <form class="form-inline">
+            <a class="nav-link" href="{{ url_for('signup') }}"><h3> REGISTRACIJA </h3></a>
+        </form>
+      </nav>
+
+       <!-- Prikaz poruke ukoliko nešto s podatcima za prijavu nije ispravno  -->
+      <div class="card text-white bg-warning mb-3 ">
+        <div class="d-flex justify-content-center">
+      {% for message in get_flashed_messages() %}
+        <p>{{ message }}</p>
+      {% endfor %}
+        </div>
+      </div>
+
+    <div class="container">
+     <div class="d-flex justify-content-center">
+      <div class="content-section">
+        <form method="POST" action="">
+            {{ form.hidden_tag() }}
+            <fieldset class="form-group">
+              <div class="d-flex justify-content-center">
+                <h2>PRIJAVA</h2>
+              </div>
+                <div class="form-group">
+                  <div class="d-flex justify-content-center">
+                    {{ form.username.label(class="form-control-label") }}
+                  </div>
+                    {% if form.username.errors %}
+                        {{ form.username(class="form-control form-control-lg is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.username.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.username(class="form-control form-control-lg") }}
+                    {% endif %}
+                </div>
+                <div class="form-group">
+                  <div class="d-flex justify-content-center">
+                  {{ form.password.label(class="form-control-label") }}
+                  </div>
+                  {% if form.password.errors %}
+                      {{ form.password(class="form-control form-control-lg is-invalid") }}
+                      <div class="invalid-feedback">
+                          {% for error in form.password.errors %}
+                              <span>{{ error }}</span>
+                          {% endfor %}
+                      </div>
+                  {% else %}
+                      {{ form.password(class="form-control form-control-lg") }}
+                  {% endif %}
+              </div>
+               
+            </fieldset>
+            <div class="form-group">
+              <div class="d-flex justify-content-center">
+                {{ form.submit(class="btn btn-outline-info") }}
+              </div>
+            </div>
+        </form>
+    </div>
+    </div>
+    </div>
+</body>
+</html>

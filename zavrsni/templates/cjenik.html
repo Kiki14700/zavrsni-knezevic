@@ -1,0 +1,37 @@
+<!--Naslijeđivanje base.html i njezinih komponenti-->
+{% extends 'base.html' %}
+
+<!-- Block dio, naslijeđen od base.html, u koji ide poveznica sa css-om  -->
+{% block link_css %} <link rel="stylesheet"  href="{{ url_for('static', filename='styles/cjenik.css') }}">{% endblock %}
+
+<!-- Block dio, naslijeđen od base.html, u koji ide glavni sadržaj stranice  -->
+{% block body %}
+
+<section class="body">
+
+
+<!-- Cijena svakog pojedinačnog proizvoda za određenu količinu -->
+<section class="section">
+  {% for products in products %}
+  <div class="pokus">
+  <div class="card">
+   
+    <div class="alert alert-dark" role="alert">
+      <h3 class="d-flex justify-content-center"> {{ products.name }} </h3>
+    </div>
+   
+    <div class="card-body">
+      <h5 class="d-flex justify-content-center"> #productOfCroatia </h5>
+      <h5 class="d-flex justify-content-center"> 100% PRIRODNO </h5>
+      <div class="d-flex justify-content-center">
+      <p class="card-text">{{ products.amount }} {{ products.measure }} <i class="fas fa-long-arrow-alt-right"></i> {{ products.price }} HRK</p>
+     </div>
+    </div>
+    </div>
+  </div>
+  {% endfor %}
+  
+</section>
+    
+
+{% endblock %}
